@@ -6,6 +6,14 @@
     <%= f.input :title %>
   </div>
 
+   <div class="group">
+      <%= f.association :groups %>
+    </div>
+
+  <div class="group">
+    <%= f.association :category %>
+  </div>
+
   <div class="group">
     <%= f.input :description %>
   </div>
@@ -25,3 +33,10 @@
   <%= f.submit "Create Product", data: { disable_with: "create..." } %>
 
 <% end %>
+
+
+<script >
+$("#product_category_id").select2();
+$("#product_group_ids").select2();
+
+</script>

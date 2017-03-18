@@ -10,6 +10,7 @@
         <td>#</td>
         <td width="220">Product Pic</td>
         <td>name</td>
+        <td>category</td>
         <td>description</td>
         <td>quantity</td>
         <td>price</td>
@@ -32,6 +33,7 @@
          <% end %>
        </td>
           <td><%= link_to(product.title, admin_product_path(product)) %></td>
+          <td><%= product.category.name %></td>
           <td><%= simple_format(product.description) %></td>
           <td><%= product.quantity %></td>
           <td><%= product.price %></td>
