@@ -1,7 +1,8 @@
-<h2>Product List</h2>
+<!-- <h2>Product List</h2> -->
+<h2><%= t("admin.product_list")%></h2>
 <div class="col-md-12">
   <div class="product">
-    <%= link_to("新增产品", new_admin_product_path, class: "btn btn-primary pull-right") %>
+    <%= link_to(t("admin.new-build"), new_admin_product_path, class: "btn btn-primary pull-right") %>
   </div>
 
     <table class="table table-bordered">
