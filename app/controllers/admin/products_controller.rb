@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
-    if @product.save
+    if @product.save!
       redirect_to admin_products_path
     else
       render :new
@@ -22,15 +22,15 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find_by_friendly_id!(params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = Product.find_by_friendly_id!(params[:id])
   end
 
     def update
-      @product = Product.find(params[:id])
+      @product = Product.find_by_friendly_id!(params[:id])
       if @product.update(product_params)
         redirect_to admin_products_path
       else
@@ -39,7 +39,7 @@ class Admin::ProductsController < ApplicationController
     end
 
     def destroy
-    @product = Product.find(params[:id])
+    @product = Product.find_by_friendly_id!(params[:id])
     @product.destroy
     flash[:alert] = "Product deleted"
     redirect_to  admin_products_path
@@ -48,6 +48,6 @@ class Admin::ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:title, :description,:quantity, :price, :image, :category_id, :location_attributes => [:id, :name, :_destroy], :group_ids => [])
+      params.require(:product).permit(:title, :friendly_id, :description,:quantity, :price, :image, :category_id, :location_attributes => [:id, :name, :_destroy], :group_ids => [])
     end
 end
