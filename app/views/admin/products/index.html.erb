@@ -39,7 +39,7 @@
           <td><%= simple_format(product.description) %></td>
           <td><%= product.quantity %></td>
           <td><%= product.price %></td>
-          <td><%= product.created_at %></td>
+          <td><%= product.created_at.to_s %></td>
           <td>
               <%= link_to("Edit", edit_admin_product_path(product))%>
               |
