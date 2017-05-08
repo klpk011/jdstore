@@ -13,7 +13,7 @@
             </ul>
               <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-CN" %>
               <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
-            <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav navbar-right">
                 <li>
                     <%= link_to carts_path do %>
                         <%= t("cart")%><i class= "fa fa-shopping-cart" ></i>( <%= current_cart.products.count%> )

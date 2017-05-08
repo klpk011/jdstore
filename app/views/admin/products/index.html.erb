@@ -15,6 +15,7 @@
         <td>description</td>
         <td>quantity</td>
         <td>price</td>
+        <td width="100">created_at</td>
         <td width="100">option</td>
       </tr>
     </thead>
@@ -38,6 +39,7 @@
           <td><%= simple_format(product.description) %></td>
           <td><%= product.quantity %></td>
           <td><%= product.price %></td>
+          <td><%= product.created_at %></td>
           <td>
               <%= link_to("Edit", edit_admin_product_path(product))%>
               |
