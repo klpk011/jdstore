@@ -41,7 +41,8 @@ gem 'carrierwave-qiniu'
 gem 'qiniu-rs'
 gem 'figaro'
 gem "select2-rails"
-
+gem "rails-i18n"
+gem "devise-i18n"
 
 
 
