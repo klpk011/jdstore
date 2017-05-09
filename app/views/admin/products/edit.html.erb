@@ -1,52 +1,59 @@
 <h2> Edit Product </h2>
-
 <%= simple_form_for [:admin, @product] do |f| %>
-
-  <div class="group">
-    <%= f.input :title %>
-  </div>
-  <div class="form-group">
-    <%= f.label :friendly_id %>
-    <%= f.text_field :friendly_id, :required => true, :class => "form-control" %>
-    <p class="help-block">限小写英数字及横线，将作为网址的一部分</p>
-  </div>
-
-  <div class="group">
-     <%= f.association :groups %>
-   </div>
-
-  <div class="group">
-    <%= f.association :category %>
-  </div>
-
-  <div class="group">
-    <%= f.input :description %>
-  </div>
-
-  <div class="group">
-    <%= f.input :quantity %>
-  </div>
-
-  <div class="group">
-    <%= f.input :price %>
-  </div>
-
-   <% if @product.image.present? %>
-     <span>目前商品图</span> <br>
-     <%= image_tag(@product.image.thumb.url) %>
-   <% end %>
-
-  <div class="group">
-   <%= f.input :image, as: :file %>
-  </div>
-
-
-  <%= f.submit "Edit Product", data: { disable_with: "Edit..." } %>
-
+    <div class="group">
+        <%= f.input :title %>
+    </div>
+    <div class="form-group">
+        <%= f.label :friendly_id %>
+        <%= f.text_field :friendly_id, :required => true, :class => "form-control" %>
+        <p class="help-block">限小写英数字及横线，将作为网址的一部分</p>
+    </div>
+    <div class="group">
+        <%= f.association :groups %>
+    </div>
+    <div class="group">
+        <%= f.association :category %>
+    </div>
+    <div class="group">
+        <%= f.input :description %>
+    </div>
+    <div class="group">
+        <%= f.input :quantity %>
+    </div>
+    <div class="group">
+        <%= f.input :price %>
+    </div>
+    <% if @product.image.present? %>
+        <span>目前商品图</span> <br>
+        <%= image_tag(@product.image.thumb.url) %>
+    <% end %>
+    <div class="group">
+        <%= f.input :image, as: :file %>
+    </div>
+    <%= f.nested_fields_for :tickets do |ff| %>
+        <fieldset style="border-left: 5px solid #bbb; margin-bottom: 10px; padding: 10px;">
+            <legend>Ticket</legend>
+            <div class="form-group">
+                <%= ff.label :name %>
+                <%= ff.text_field :name, :class => "form-control" %>
+            </div>
+            <div class="form-group">
+                <%= ff.label :price %>
+                <%= ff.number_field :price, :class => "form-control" %>
+            </div>
+            <div class="form-group">
+                <%= ff.label :description %>
+                <%= ff.text_area :description, :class => "form-control" %>
+            </div>
+        </fieldset>
+        <%= ff.remove_nested_fields_link "移除这个票种", :class => "btn btn-danger" %>
+    <% end %>
+    <p class="text-right">
+        <%= f.add_nested_fields_link :tickets, "新增票种", :class => "btn btn-default" %>
+    </p>
+    <%= f.submit "Edit Product", data: { disable_with: "Edit..." } %>
 <% end %>
-
-
 <script >
-$("#product_category_id").select2();
-$("#product_group_ids").select2();
+    $("#product_category_id").select2();
+    $("#product_group_ids").select2();
 </script>

@@ -27,6 +27,7 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find_by_friendly_id!(params[:id])
+    @product.tickets.build if @product.tickets.empty?
   end
 
     def update
@@ -48,6 +49,6 @@ class Admin::ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:title, :friendly_id, :description,:quantity, :price, :image, :category_id, :location_attributes => [:id, :name, :_destroy], :group_ids => [])
+      params.require(:product).permit(:title, :friendly_id, :description,:quantity, :price, :image, :category_id, :location_attributes => [:id,:name, :_destroy], :group_ids => [], :tickets_attributes => [:id, :name, :description, :price, :_destroy])
     end
 end
