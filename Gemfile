@@ -45,6 +45,7 @@ gem "rails-i18n"
 gem "devise-i18n"
 gem "nested_form_fields"
 gem "ranked-model"
+gem 'rails-erd', require: false, group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
